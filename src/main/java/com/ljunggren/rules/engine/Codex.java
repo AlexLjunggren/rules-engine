@@ -16,7 +16,7 @@ public class Codex<I, O> {
         rules = new ArrayList<Rule<I,O>>();
     }
     
-    public void add(Rule<I, O> rule) {
+    public void addRule(Rule<I, O> rule) {
         rules.add(rule);
     }
 

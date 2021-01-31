@@ -27,9 +27,9 @@ public class CodexTest {
     };
     
     @Test
-    public void addTest() {
+    public void addRuleTest() {
         Codex<Object, Object> codex = new Codex<>();
-        codex.add(rule);
+        codex.addRule(rule);
         assertTrue(codex.getRules().contains(rule));
     }
     

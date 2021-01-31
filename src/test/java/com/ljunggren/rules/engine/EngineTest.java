@@ -16,7 +16,7 @@ public class EngineTest {
     @Before
     public void setup() {
         codex = new Codex<Object, String>();
-        codex.add(new Rule<Object, String>() {
+        codex.addRule(new Rule<Object, String>() {
             public boolean applies(Object input) {
                 return input instanceof String;
             }
@@ -24,7 +24,7 @@ public class EngineTest {
                 return "String";
             }
         });
-        codex.add(new Rule<Object, String>() {
+        codex.addRule(new Rule<Object, String>() {
             public boolean applies(Object input) {
                 return input instanceof Number;
             }
@@ -32,7 +32,7 @@ public class EngineTest {
                 return "Number";
             }
         });
-        codex.add(new Rule<Object, String>() {
+        codex.addRule(new Rule<Object, String>() {
             public boolean applies(Object input) {
                 return input instanceof Integer;
             }
