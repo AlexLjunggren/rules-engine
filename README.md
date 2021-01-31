@@ -14,7 +14,7 @@ Codex<I, O> codex = new Codex<>();
 
 ConflictResolution - Interace for conflict resolution
 
-```
+```java
 public interface ConflictResolution<I, O> {
     O resolve(List<Rule<I, O>> rules, I input);
 }
