@@ -6,7 +6,7 @@ Engine
 Engine<I, O> engine = new Engine<>(codex);
 ```
 
-Trace
+Trace - Consumes rule that was executed
 
 ```java
 engine.trace(e -> setRule(e));
