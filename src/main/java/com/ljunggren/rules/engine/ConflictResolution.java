@@ -4,6 +4,6 @@ import java.util.List;
 
 public interface ConflictResolution<I, O> {
 
-    O resolve(List<Rule<I, O>> rules, I input);
+    Rule<I, O> resolve(List<Rule<I, O>> rules, I input);
     
 }

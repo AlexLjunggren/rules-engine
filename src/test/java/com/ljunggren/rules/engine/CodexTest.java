@@ -37,8 +37,8 @@ public class CodexTest {
     public void setConflictResoltutionTest() {
         Codex<Object, Object> codex = new Codex<>();
         ConflictResolution<Object, Object> conflictResolution = new ConflictResolution<Object, Object>() {
-            public Object resolve(List<Rule<Object, Object>> rules, Object input) {
-                return rules.get(0).execute(input);
+            public Rule<Object, Object> resolve(List<Rule<Object, Object>> rules, Object input) {
+                return rules.get(0);
             }
         };
         codex.setConflictResolution(conflictResolution);

@@ -5,6 +5,7 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 
 import java.util.List;
+import java.util.function.Consumer;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -12,6 +13,7 @@ import org.junit.Test;
 public class EngineTest {
     
     private Codex<Object, String> codex;
+    private Rule<Object, String> rule;
     
     @Before
     public void setup() {
@@ -40,6 +42,10 @@ public class EngineTest {
                 return "Integer";
             }
         });
+    }
+    
+    private void setRule(Rule<Object, String> rule) {
+        this.rule = rule;
     }
 
     @Test
@@ -84,12 +90,35 @@ public class EngineTest {
     @Test
     public void executeWithConflictResolutionTest() {
         codex.setConflictResolution(new ConflictResolution<Object, String>() {
-            public String resolve(List<Rule<Object, String>> rules, Object input) {
-                return rules.get(1).execute(input);
+            public Rule<Object, String> resolve(List<Rule<Object, String>> rules, Object input) {
+                return rules.get(1);
             }
         });
         Engine<Object, String> engine = new Engine<>(codex);
         assertEquals("Integer", engine.execute(100));
+    }
+    
+    @Test
+    public void traceTest() {
+        Consumer<Rule<Object, String>> trace = e -> setRule(e);
+        Engine<Object, String> engine = new Engine<>(codex).trace(trace);
+        engine.execute("Test");
+        assertNotNull(rule);
+    }
+    
+    @Test
+    public void traceNullTest() {
+        Consumer<Rule<Object, String>> trace = e -> setRule(e);
+        Engine<Object, String> engine = new Engine<>(codex).trace(trace);
+        engine.execute(true);
+        assertNull(rule);
+    }
+    
+    @Test
+    public void traceNotSetTest() {
+        Engine<Object, String> engine = new Engine<>(codex);
+        engine.execute("Test");
+        assertNull(rule);
     }
     
 }

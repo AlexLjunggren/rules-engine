@@ -6,6 +6,12 @@ Engine
 Engine<I, O> engine = new Engine<>(codex);
 ```
 
+Trace
+
+```java
+engine.trace(e -> setRule(e));
+```
+
 Codex - Set of rules
 
 ```java
@@ -27,7 +33,21 @@ public interface Rule<I, O> {
     boolean applies(I input); 
     O execute(I input);
 }
+```
 
+RuleInfo
+
+```java
+@RuleInfo(action = "Action", condition = "Condition", name = "Rule name")
+```
+
+Analyzer - Extract properties from RuleInfo annotation
+
+```java
+Analyzer<I, O> analyzer = new Analyzer<>();
+analyzer.getAction(rule);
+analyzer.getCondition(rule);
+analyzer.getName(rule);
 ```
 
 ## Codex ##

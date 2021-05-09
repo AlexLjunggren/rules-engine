@@ -1,6 +1,7 @@
 package com.ljunggren.rules.engine;
 
 import java.util.List;
+import java.util.function.Consumer;
 import java.util.stream.Collectors;
 
 import lombok.Getter;
@@ -9,14 +10,22 @@ import lombok.Getter;
 public class Engine<I, O> {
 
     private Codex<I, O> codex;
+    private Consumer<Rule<I, O>> trace;
 
     public Engine(Codex<I, O> codex) {
         this.codex = codex == null ? new Codex<>() : codex;
     }
     
+    public Engine<I, O> trace(Consumer<Rule<I, O>> trace) {
+        this.trace = trace;
+        return this;
+    }
+    
     public O execute(I input) {
         List<Rule<I, O>> rules = applicableRules(input);
-        return rules.isEmpty() ? noRules(input) : executeRules(rules, input);
+        Rule<I, O> rule = rules.isEmpty() ? noRules(input) : executeRules(rules, input);
+        trace(rule);
+        return rule == null ? null : rule.execute(input);
     }
     
     private List<Rule<I, O>> applicableRules(I input) {
@@ -25,21 +34,27 @@ public class Engine<I, O> {
                 .collect(Collectors.toList());
     }
     
-    private O noRules(I input) {
-        return codex.getDefaultRule() == null ? null : 
-            codex.getDefaultRule().execute(input);
+    private Rule<I, O> noRules(I input) {
+        return codex.getDefaultRule() == null ? 
+                null : codex.getDefaultRule();
     }
     
-    private O executeRules(List<Rule<I, O>> rules, I input) {
+    private Rule<I, O> executeRules(List<Rule<I, O>> rules, I input) {
         return rules.size() == 1 ? 
-                rules.get(0).execute(input) :
+                rules.get(0) : 
                     multipleRules(rules, input);
     }
     
-    private O multipleRules(List<Rule<I, O>> rules, I input) {
+    private Rule<I, O> multipleRules(List<Rule<I, O>> rules, I input) {
         return codex.getConflictResolution() == null ?
-                rules.get(0).execute(input) :
+                rules.get(0) :
                     codex.getConflictResolution().resolve(rules, input);
+    }
+    
+    private void trace(Rule<I, O> rule) {
+        if (trace != null) {
+            trace.accept(rule);
+        }
     }
     
 }
