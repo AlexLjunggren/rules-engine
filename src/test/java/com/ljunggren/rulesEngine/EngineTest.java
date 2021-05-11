@@ -1,4 +1,4 @@
-package com.ljunggren.rules.engine;
+package com.ljunggren.rulesEngine;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -9,6 +9,11 @@ import java.util.function.Consumer;
 
 import org.junit.Before;
 import org.junit.Test;
+
+import com.ljunggren.rulesEngine.Codex;
+import com.ljunggren.rulesEngine.ConflictResolution;
+import com.ljunggren.rulesEngine.Engine;
+import com.ljunggren.rulesEngine.Rule;
 
 public class EngineTest {
     

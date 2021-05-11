@@ -1,4 +1,4 @@
-package com.ljunggren.rules.engine;
+package com.ljunggren.rulesEngine;
 
 public interface Rule<I, O> {
 

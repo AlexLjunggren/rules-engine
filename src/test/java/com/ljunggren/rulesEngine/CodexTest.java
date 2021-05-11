@@ -1,10 +1,14 @@
-package com.ljunggren.rules.engine;
+package com.ljunggren.rulesEngine;
 
 import static org.junit.Assert.*;
 
 import java.util.List;
 
 import org.junit.Test;
+
+import com.ljunggren.rulesEngine.Codex;
+import com.ljunggren.rulesEngine.ConflictResolution;
+import com.ljunggren.rulesEngine.Rule;
 
 public class CodexTest {
 

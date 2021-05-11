@@ -1,7 +1,7 @@
-package com.ljunggren.rules.engine.analyzer;
+package com.ljunggren.rulesEngine.analyzer;
 
-import com.ljunggren.rules.engine.Rule;
-import com.ljunggren.rules.engine.annotation.RuleInfo;
+import com.ljunggren.rulesEngine.Rule;
+import com.ljunggren.rulesEngine.annotation.RuleInfo;
 
 public class Analyzer<I, O> {
 

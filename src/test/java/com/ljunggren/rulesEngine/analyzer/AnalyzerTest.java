@@ -1,12 +1,13 @@
-package com.ljunggren.rules.engine.analyzer;
+package com.ljunggren.rulesEngine.analyzer;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
-import com.ljunggren.rules.engine.Rule;
-import com.ljunggren.rules.engine.annotation.RuleInfo;
+import com.ljunggren.rulesEngine.Rule;
+import com.ljunggren.rulesEngine.analyzer.Analyzer;
+import com.ljunggren.rulesEngine.annotation.RuleInfo;
 
 public class AnalyzerTest {
     
