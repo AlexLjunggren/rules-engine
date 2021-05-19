@@ -6,7 +6,6 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 
 import com.ljunggren.rulesEngine.Rule;
-import com.ljunggren.rulesEngine.analyzer.Analyzer;
 import com.ljunggren.rulesEngine.annotation.RuleInfo;
 
 public class AnalyzerTest {

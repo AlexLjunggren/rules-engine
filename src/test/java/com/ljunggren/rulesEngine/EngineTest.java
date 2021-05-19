@@ -10,11 +10,6 @@ import java.util.function.Consumer;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.ljunggren.rulesEngine.Codex;
-import com.ljunggren.rulesEngine.ConflictResolution;
-import com.ljunggren.rulesEngine.Engine;
-import com.ljunggren.rulesEngine.Rule;
-
 public class EngineTest {
     
     private Codex<Object, String> codex;
