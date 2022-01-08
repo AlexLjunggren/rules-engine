@@ -6,6 +6,8 @@ Engine
 Engine<I, O> engine = new Engine<>(codex);
 ```
 
+**Note:** I = Input, O = Output
+
 Trace - Consumes rule that was executed
 
 ```java
