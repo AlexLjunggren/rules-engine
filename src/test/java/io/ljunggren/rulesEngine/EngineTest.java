@@ -1,4 +1,4 @@
-package com.ljunggren.rulesEngine;
+package io.ljunggren.rulesEngine;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;

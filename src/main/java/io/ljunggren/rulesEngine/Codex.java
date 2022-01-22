@@ -1,4 +1,4 @@
-package com.ljunggren.rulesEngine;
+package io.ljunggren.rulesEngine;
 
 import java.util.ArrayList;
 import java.util.List;
